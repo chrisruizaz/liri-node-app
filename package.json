@@ -1,7 +1,7 @@
 {
-  "name": "liri-node-app",
+  "name": "y",
   "version": "1.0.0",
-  "description": "",
+  "description": "See the published site [here](https://chrisruizaz.github.io/liri-node-app/.)",
   "main": "keys.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/chrisruizaz/liri-node-app/issues"
   },
-  "homepage": "https://github.com/chrisruizaz/liri-node-app#readme"
+  "homepage": "https://github.com/chrisruizaz/liri-node-app#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "inquire": "^0.4.8"
+  }
 }
