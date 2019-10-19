@@ -1,8 +1,9 @@
-// require("dotenv").config();
+require("dotenv").config();
 const args = process.argv;
 const command = args[2];
 var search = process.argv.slice(3).join(" ");
 const fs = require("fs");
+const Spotify = require("node-spotify-api");
 liriCommand(search);
 function liriCommand(search) {
   if (command === "spotify-this-song") {
@@ -20,8 +21,15 @@ function liriCommand(search) {
 
 function spotifyThis(search) {
   var keys = require("./keys.js");
-  var spotify = new Spotify(keys.spotify);
-  console.log(spotify);
+  console.log(keys);
+  var spotify = new Spotify(keys);
+  spotify.search({ type: "track", query: search }, function(err, data) {
+    if (err) {
+      return console.log("Error occurred: " + err);
+    }
+
+    console.log(data.tracks.items[0]);
+  });
 }
 
 function bandsinTown(search) {
@@ -32,7 +40,7 @@ function bandsinTown(search) {
     search +
     "/events?app_id=codingbootcamp";
   axios.get(queryUrl).then(function(response) {
-    console.log(response);
+    console.log(response.data);
   });
 }
 
