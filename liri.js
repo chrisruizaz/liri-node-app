@@ -27,8 +27,15 @@ function spotifyThis(search) {
     if (err) {
       return console.log("Error occurred: " + err);
     }
-
-    console.log(data.tracks.items[0]);
+    // * Artist(s)
+    console.log(data.tracks.items[0].artists[0].name);
+    // * The song's name
+    console.log(data.tracks.items[0].name);
+    // * A preview link of the song from Spotify
+    console.log(data.tracks.items[0].external_urls);
+    // * The album that the song is from
+    console.log(data.tracks.items[0].album.name);
+    // console.log(data.tracks.items[0]);
   });
 }
 
@@ -40,7 +47,12 @@ function bandsinTown(search) {
     search +
     "/events?app_id=codingbootcamp";
   axios.get(queryUrl).then(function(response) {
-    console.log(response.data);
+    // * Name of the venue
+    console.log(response.data[0].venue.name);
+    // * Venue location
+    console.log(response.data[0].venue.city);
+    // * Date of the Event (use moment to format this as "MM/DD/YYYY")
+    console.log(response.data[0].datetime);
   });
 }
 
